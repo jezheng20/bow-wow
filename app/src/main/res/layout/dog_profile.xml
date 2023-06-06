@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:elevation="20dp"
+        android:shape = "ring"
+        android:id="@+id/cvMain"
+        app:cardCornerRadius="20dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvProfileImg"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:innerRadius="0dp"
+                android:shape="ring"
+                android:thicknessRatio="1.9"
+                app:cardCornerRadius="40dp">
+
+                <ProgressBar
+                    android:id="@+id/pbProfileImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    style="?android:attr/progressBarStyle"
+                    />
+
+                <ImageView
+                    android:id="@+id/ivProfileImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:contentDescription="Dog Profile Image"
+                    android:elevation="0dp"
+                    android:scaleType="centerCrop"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvBreedName"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:text="Breed name"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                />
+
+            <CheckBox
+                android:id="@+id/cbIsFavorite"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:button="@drawable/favorites_selector"
+                android:layout_marginRight="16dp"
+                app:buttonTint = "#f0d665"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
