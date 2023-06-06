@@ -42,7 +42,7 @@ class FavoritesFragment : Fragment() {
         rvFavDogList = view.findViewById(R.id.rvFavDogList)
         rvFavDogList.adapter = dogAdapter
         rvFavDogList.layoutManager = LinearLayoutManager(this.context)
-        rvFavDogList.setItemViewCacheSize(500)
+        rvFavDogList.setItemViewCacheSize(900)
 
         refreshList()
         if (dogAdapter.itemCount == 0) {

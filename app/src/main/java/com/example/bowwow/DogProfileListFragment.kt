@@ -43,7 +43,7 @@ class DogProfileListFragment : Fragment() {
         rvDogBreedList = view.findViewById(R.id.rvFavDogList)
         rvDogBreedList.adapter = dogAdapter
         rvDogBreedList.layoutManager = LinearLayoutManager(this.context)
-        rvDogBreedList.setItemViewCacheSize(500)
+        rvDogBreedList.setItemViewCacheSize(900)
         svDogSearch = view.findViewById(R.id.svDogSearch)
 
         if(dogAdapter.itemCount == 0) {
@@ -52,7 +52,7 @@ class DogProfileListFragment : Fragment() {
         svDogSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query.isNullOrBlank()) { dogAdapter.unfilter() }
-                else { dogAdapter.filter(query) }
+                else { dogAdapter.filter(query); svDogSearch.clearFocus()}
                 return true
             }
             override fun onQueryTextChange(newText: String?): Boolean {
