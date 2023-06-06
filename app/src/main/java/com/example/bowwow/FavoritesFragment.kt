@@ -28,6 +28,11 @@ class FavoritesFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    /*
+     * On view creation, we will always re-refresh the favorites revyvlerview
+     * and replace with a message if empty.
+     */
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,12 +61,20 @@ class FavoritesFragment : Fragment() {
 
     private fun String.capitalize() = replaceFirstChar(Char::titlecase)
 
+    /*
+     * Helper function to convert internal ID to the dog's name
+     * @param breedId: the id to be converted
+     */
     private fun dogLabelFromId(breedId: String): String {
         var names: List<String> = breedId.split('/')
         if (names.size > 1 && names[1].isNotEmpty()) return "${names[1].capitalize()} ${names[0].capitalize()}"
         return names[0].capitalize()
     }
 
+    /*
+     * Called every time the view is reloaded.
+     * Populates the adapter with dogs marked as favorite (listed in SharedPreferences)
+     */
     private fun refreshList() {
         //Check SharedPreferences
         var prefs = (activity as Context).getSharedPreferences(PREFS_NAME, 0)

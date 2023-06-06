@@ -21,7 +21,8 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /**
- * A fragment representing a list of Items.
+ * This fragment fetches and displays the images of a specific dog breed.
+ * breedId: the id of the dog breed
  */
 class BreedImageFragment : Fragment() {
     private val columnCount = 3

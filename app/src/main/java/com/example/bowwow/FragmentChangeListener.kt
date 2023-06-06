@@ -1,10 +1,20 @@
 package com.example.bowwow
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
+
+/*
+ * Simple fragment change listener
+ */
 
 interface FragmentChangeListener {
+    /*
+     * Load the specified fragment
+     */
     public fun loadFragment(fragment: Fragment, direction: Direction = Direction.FADE)
+
+    /*
+     * Pop the last fragment from backstack
+     */
     public fun back()
 
     enum class Direction {

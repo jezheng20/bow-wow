@@ -16,6 +16,10 @@ import com.android.volley.Request
 import org.json.JSONArray
 import org.json.JSONObject
 
+/*
+ * This fragment displays different dog breeds from the dog APi as profile cards.
+ */
+
 class DogProfileListFragment : Fragment() {
 
     private lateinit var dogAdapter: DogProfileRecyclerViewAdapter
@@ -66,6 +70,9 @@ class DogProfileListFragment : Fragment() {
 
     private fun String.capitalize() = replaceFirstChar(Char::titlecase)
 
+    /*
+     * Helper function to parse breed and sub-breed into a dog profile card
+     */
     private fun generateDog(breed: String, subBreed: String=""): DogProfile {
         var breedLabel: String
         var breedId: String
@@ -81,6 +88,9 @@ class DogProfileListFragment : Fragment() {
         return DogProfile(breedLabel, breedId, imgURL = imgURL, isFavorite = false, isVisible = true)
     }
 
+    /*
+     * Fetches all dog breeds from the API and updates UI accordingly.
+     */
     private fun refreshList() {
         //Make a GET request to the dog API
         val req = JsonObjectRequest(Request.Method.GET, BREEDS_LIST_URL, null,

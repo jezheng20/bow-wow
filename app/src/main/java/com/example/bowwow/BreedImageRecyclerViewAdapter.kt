@@ -12,8 +12,7 @@ import com.squareup.picasso.Picasso
 import com.android.volley.Request
 
 /**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
+ * RecyclerView.Adapter that displays a list of dog images.
  */
 class BreedImageRecyclerViewAdapter(
     private val values: MutableList<BreedImage>
@@ -27,6 +26,9 @@ class BreedImageRecyclerViewAdapter(
         )
     }
 
+    /*
+     * Sets the viewholder's image URL for future use
+     */
     override fun onBindViewHolder(holder: BreedImageViewHolder, position: Int) {
         var cur = values[position]
         holder.apply {
@@ -36,6 +38,12 @@ class BreedImageRecyclerViewAdapter(
     }
 
     override fun getItemCount(): Int = values.size
+
+    /*
+     * Fetches MAX_SIZE images of dogs of a certain breed.
+     * @param queue: the request queue in which to place GET calls
+     * @param breedId: the dog breed/sub-breed to populate the view with
+     */
 
     fun populate(queue: RequestQueue, breedId: String) {
         for(i in 0 until MAX_SIZE) {
@@ -58,11 +66,18 @@ class BreedImageRecyclerViewAdapter(
         }
     }
 
+    /*
+     * Adds an image to the list.
+     *  @param BreedImage: the image of the specified dog breed
+     */
     private fun addItem(item: BreedImage) {
         values.add(item)
         notifyItemInserted(values.size-1)
     }
 
+    /*
+     * Inner class representing the viewholder for each image
+     */
     class BreedImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var ctx: Context
         var ivDisplayDog: ImageView

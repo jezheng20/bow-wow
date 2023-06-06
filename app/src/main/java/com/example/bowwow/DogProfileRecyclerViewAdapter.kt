@@ -18,7 +18,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.squareup.picasso.Picasso
 
 /**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
+ * RecyclerView.Adapter that displays a list of Dog profile cards.
  * TODO: Replace the implementation with code for your data type.
  */
 class DogProfileRecyclerViewAdapter(
@@ -48,7 +48,7 @@ class DogProfileRecyclerViewAdapter(
                     apply()
                 }
             }
-            // Load the fragment representing the 15 breed images
+            // Load the fragment showing the specified breed's images
             tvBreedName.setOnClickListener {
                 var newFrag = BreedImageFragment()
                 var args = Bundle().apply {
@@ -65,11 +65,17 @@ class DogProfileRecyclerViewAdapter(
     }
     override fun getItemCount(): Int = dogProfiles.size
 
+    /*
+     * Tags all views in the recyclerview as visible.
+     */
     fun unfilter() {
         for (i: DogProfile in dogProfiles) i.isVisible = true
         notifyDataSetChanged()
     }
 
+    /*
+     * Tags all views in the recyclerview as invisible if they do not contain query.
+     */
     fun filter(sequence: String) {
         for (i: DogProfile in dogProfiles) {
             if (!i.breedLabel.contains(sequence, ignoreCase = true)) i.isVisible = false
@@ -77,6 +83,11 @@ class DogProfileRecyclerViewAdapter(
         }
         notifyDataSetChanged()
     }
+
+    /*
+     * Fetches the profile picture URL for each card.
+     * @param queue: the queue in which to place the requests.
+     */
 
     fun setProperImgURLs(queue: RequestQueue) {
         //TODO: Migrate this to dog api class
